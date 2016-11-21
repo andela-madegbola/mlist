@@ -7,4 +7,15 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  has_many :bucketlists
+
+  before_save :generate_serial_no
+
+  private
+
+  def generate_serial_no
+    invalid_number = serial_no
+    self.serial_no = rand(100..999).to_s while serial_no == invalid_number
+  end
+
 end

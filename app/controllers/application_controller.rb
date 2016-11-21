@@ -1,26 +1,25 @@
 class ApplicationController < ActionController::API
-  require 'jsonwebtoken'
+  require 'json_web_token'
 
-  def authenticate_request!
-    unless payload && JsonWebToken.valid_payload(payload.first) && current_user.token
-      return invalid_authentication
-    end
-    current_user
+  include Concerns::Messages
+  before_action :authenticate_request
+
+  private
+
+  def authenticate_request
+    return token_not_authorized unless decode_auth_header.class.name == "User"
+    @current_user = decode_auth_header
   end
 
-  def invalid_authentication
-    render json: {error: 'Invalid Request'}, status: :unauthorized
+  def token_not_authorized
+    render json: { error: not_authorized_message }, status: 401
   end
 
-  def payload
-    auth_header = request.headers['Authorization']
-    token = auth_header.split(' ').last
-    JsonWebToken.decode(token)
-  rescue
-    nil
-  end
-
-  def current_user
-    @current_user = User.find_by(id: payload[0]['user_id'])
+  def decode_auth_header
+    return nil unless request.headers["Authorization"].present?
+    header_token = request.headers["Authorization"].split(" ").last
+    decode_auth_token ||= JsonWebToken.decode(header_token)
+    @user ||= User.find_by(id: decode_auth_token[:user_id]) if decode_auth_token
+    @user if @user && (@user.serial_no == decode_auth_token[:serial_no])
   end
 end
