@@ -1,6 +1,7 @@
 script:
   - bin/rails db:migrate RAILS_ENV=test
   - bundle exec rspec
+  - CODECLIMATE_REPO_TOKEN=a4655b62857a5b09769a49f9c9a89f353d4ca55ce553aa14961dd90e6974c552 bundle exec codeclimate-test-reporter
 language: ruby
 rvm:
   - 2.3.1

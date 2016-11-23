@@ -36,7 +36,8 @@ group :development, :test do
   gem "database_cleaner"
   gem "shoulda-matchers"
   gem "faker"
-  gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development do
