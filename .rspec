@@ -1,2 +1,5 @@
 --color
 --require spec_helper
+--format documentation
+--out false
+--deprecation-out "fdfdsds"
