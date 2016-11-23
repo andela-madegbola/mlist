@@ -313,47 +313,6 @@ Note that your token expires automatically after every 3 hours of logging in, yo
 </aside>
 
 
-<h2 id="user-logged-in">User Logged In</h2>
-<blockquote>
-<p>HTTP Status: 200</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -i -X GET http://mlist-api.herokuapp.com/api/v1/auth/logged_in <span class="se">\</span>
--H <span class="s2">"token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InVzZXJfaWQiOjV9LCJleHAiOjE0Nzc2NDk5NDh9.OYA0Rbx_08hlahcsby5qr8r1HES5BOy3V6y115pnmBI"</span>
-</code></pre>
-
-<blockquote>
-<p>The above should return JSON data in the format </p>
-</blockquote>
-<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You are still logged in"</span><span class="w">
-    </span><span class="nt">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday, 30/Oct/2016  1:02PM"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://mlist-api.herokuapp.com/api/v1/auth/logged_in</code> </p>
-
-<p>This shows whether your token has expired or not.</p>
-
-<h3 id="headers">Headers</h3>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token</td>
-<td>a valid user token</td>
-</tr>
-</tbody></table>
-<aside>
-Please ensure you pass in a valid user token or you may not be able to confirm your status.
-</aside>
-
-
 
 <h2 id="user-logout">User Logout</h2>
 <blockquote>
