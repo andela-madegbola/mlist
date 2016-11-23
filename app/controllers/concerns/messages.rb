@@ -4,6 +4,10 @@ module Concerns
       "Your token expires in 3 hours time!"
     end
 
+    def invalid_login_message
+      "Invalid email or password!"
+    end
+
     def logout_message
       "You are now logged out!"
     end
@@ -23,5 +27,14 @@ module Concerns
     def not_permitted
       render json: { error: not_permitted_message }, status: 403
     end
+
+    def create_error
+      "Bucketlist not saved"
+    end
+
+    def update_error
+      "Bucketlist not updated"
+    end
+
   end
 end

@@ -4,7 +4,7 @@ class Api::V1::BucketlistsController < ApplicationController
 
   def create
     @bucketlist = @current_user.bucketlists.new(bucketlist_params)
-    return not_created unless @bucketlist.save
+    return create_error unless @bucketlist.save
     render json: @bucketlist
   end
 
@@ -18,7 +18,7 @@ class Api::V1::BucketlistsController < ApplicationController
   end
 
   def update
-    return not_updated unless @bucketlist.update(bucketlist_params)
+    return update_error unless @bucketlist.update(bucketlist_params)
     render json: @bucketlist
   end
 

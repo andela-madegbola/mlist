@@ -3,8 +3,11 @@ class Bucketlist < ApplicationRecord
 
   has_many :items, dependent: :destroy
   belongs_to :user
+  validates :name,  presence: true,
+                    length: { maximum: 50 }
 
-  scope :search, lambda { |name_query|
-    where("lower(name) LIKE ?", "%#{name_query.downcase if name_query}%")
+  scope :search, -> (name) {
+    name = name.downcase if name
+    where("lower(name) like ?", "%#{name}%")
   }
 end
