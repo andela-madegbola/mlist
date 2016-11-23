@@ -1,0 +1,105 @@
+
+Auth
+  POST /auth/login
+    with valid login credentials
+[32m      assigns a token to the user[0m
+[32m      creates token with valid user_id and serial_no key[0m
+    with invalid login credentials
+[32m      refuses user authorization[0m
+  GET /auth/logout
+    with valid jwt token
+[32m      returns logout success message[0m
+[32m      invalidates all active jwt tokens[0m
+    with invalid jwt token
+[32m      returns not authorized error[0m
+    with no jwt token
+[32m      returns not authorized error[0m
+  prevent unauthorized use of valid tokens
+    with valid token
+[32m      disallows access to other user's information[0m
+
+Bucketlists
+  POST /api/v1/bucketlists
+    with authorization header
+      with valid bucketlist parameters
+[32m        creates a new bucketlist[0m
+      with invalid bucketlist parameters
+[32m        fails to create a new bucketlist[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  GET /api/v1/bucketlists
+    with authorization header
+      with no pagination params
+[32m        defaults and returns only the user's first 20 bucketlists[0m
+      with invalid pagination params
+[32m        defaults and returns only the user's first 20 bucketlists[0m
+      with pagination params and limit < 101
+[32m        returns results limited by the pagination params[0m
+      with pagination params and limit > 100
+[32m        limits bucketlists returned to the first 100 on requested page[0m
+      with pagination params and search params
+[32m        returns results limited by the pagination and search params[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  GET /api/v1/bucketlists/1
+    with authorization header
+[32m      renders the selected bucketlist[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  PUT /api/v1/bucketlists/1
+    with authorization header
+      with valid parameters
+[32m        updates selected bucketlist[0m
+      with invalid parameters
+[32m        fails to update selected bucketlist[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  DELETE /api/v1/bucketlists/1
+    with authorization header
+[32m      destroys the selected bucketlist[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+
+Items
+  POST /api/v1/bucketlists/1/items
+    with authorization header
+      with valid parameters
+[32m        creates a new item under the bucketlist[0m
+      with invalid parameters
+[32m        fails to create a new item[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  GET /api/v1/bucketlists/1/items
+    with authorization header
+      with no pagination params
+[32m        defaults and returns only the bucketlist's first 20 items[0m
+      with invalid pagination params
+[32m        defaults and returns only the bucketlist's first 20 items[0m
+      with pagination params and limit < 101
+[32m        returns item results limited by the pagination params[0m
+      with pagination params and limit > 100
+[32m        limits items returned to the first 100 on requested page[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  GET /api/v1/bucketlists/1/items/1
+    with authorization header
+[32m      renders the selected item[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  PUT /api/v1/bucketlists/1/items/1
+    with authorization header
+      with valid parameters
+[32m        updates selected item[0m
+      with invalid parameters
+[32m        fails to update selected item[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+  DELETE /api/v1/bucketlists/1/items/1
+    with authorization header
+[32m      destroys the selected item[0m
+    with no valid authorization header
+[32m      returns unauthorized error[0m
+
+Finished in 16.58 seconds (files took 7.48 seconds to load)
+[32m39 examples, 0 failures[0m
+

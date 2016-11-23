@@ -1,4 +1,6 @@
-script: bundle exec rspec
+script:
+  - bin/rails db:migrate RAILS_ENV=test
+  - bundle exec rspec
 language: ruby
 rvm:
   - 2.3.1

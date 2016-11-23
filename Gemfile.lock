@@ -48,10 +48,13 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.6)
+    codeclimate-test-reporter (0.6.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     database_cleaner (1.5.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     erubis (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -64,6 +67,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    json (1.8.3)
     jsonapi (0.1.1.beta6)
       jsonapi-parser (= 0.1.1.beta3)
       jsonapi-renderer (= 0.1.1.beta1)
@@ -142,6 +146,11 @@ GEM
     rspec-support (3.5.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
@@ -172,6 +181,7 @@ DEPENDENCIES
   activerecord-reset-pk-sequence
   bcrypt (~> 3.1.7)
   byebug
+  codeclimate-test-reporter (~> 0.6.0)
   database_cleaner
   factory_girl_rails
   faker
