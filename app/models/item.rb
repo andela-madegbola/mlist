@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  extend Paginate
+
   belongs_to :bucketlist
   before_create :status
   validates :name,  presence: true

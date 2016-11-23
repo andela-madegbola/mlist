@@ -28,12 +28,20 @@ module Concerns
       render json: { error: not_permitted_message }, status: 403
     end
 
-    def create_error
-      "Bucketlist not saved"
+    def create_error_message
+      "#{controller_name.singularize.capitalize} not created"
+    end
+
+    def update_error_message
+      "#{controller_name.singularize.capitalize} not updated"
     end
 
     def update_error
-      "Bucketlist not updated"
+      render json: { error: update_error_message }, status: 400
+    end
+
+    def create_error
+      render json: { error: create_error_message }, status: 400
     end
 
   end

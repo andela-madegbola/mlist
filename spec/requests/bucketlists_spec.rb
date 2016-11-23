@@ -97,6 +97,7 @@ RSpec.describe "Bucketlists", type: :request do
           expect(json_response.first[:name]).to_not eq "2017 parties"
           expect(json_response.first[:name]).to eq "2016 goals"
           expect(json_response.count).to eq 4
+          expect(json_response.first[:id]).to eq 1
         end
       end
     end
