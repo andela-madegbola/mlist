@@ -20,5 +20,4 @@ class User < ApplicationRecord
     invalid_number = serial_no
     self.serial_no = rand(100..999).to_s while serial_no == invalid_number
   end
-
 end

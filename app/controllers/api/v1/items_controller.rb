@@ -4,7 +4,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     @item = @bucketlist.items.new(item_params)
-    return not_created unless @item.save
+    return create_error unless @item.save
     render json: @item
   end
 
@@ -17,7 +17,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
-    return not_updated unless @item.update(item_params)
+    return update_error unless @item.update(item_params)
     render json: @item
   end
 
