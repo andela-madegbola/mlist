@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/andela-madegbola/mlist/badges/gpa.svg)](https://codeclimate.com/github/andela-madegbola/mlist) [![Issue Count](https://codeclimate.com/github/andela-madegbola/mlist/badges/issue_count.svg)](https://codeclimate.com/github/andela-madegbola/mlist) [![Build Status](https://travis-ci.org/andela-madegbola/mlist.svg?branch=master)](https://travis-ci.org/andela-madegbola/mlist) [![Coverage Status](https://coveralls.io/repos/github/andela-madegbola/mlist/badge.svg)](https://coveralls.io/github/andela-madegbola/mlist)
+
 ## Introduction
 mlist-api is an API for creating bucketlist of things you wish to complete in your lifetime, e.g Books to read, Places to travel and so many other fascinating things.
 
