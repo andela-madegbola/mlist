@@ -38,6 +38,7 @@ group :development, :test do
   gem "faker"
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem 'coveralls', require: false
 end
 
 group :development do
