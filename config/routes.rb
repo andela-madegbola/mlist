@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "/", :to => redirect("/api/docs/index.html")
-  resources :users, only: :create
+  resources :users, only: [:create, :destroy]
   post '/auth/login'   => 'auth#login'
   get '/auth/logout'   => 'auth#logout'
 

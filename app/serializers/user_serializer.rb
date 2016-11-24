@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
   include SerializerHelper
 
-  attributes :id, :firstname, :lastname, :email, :date_modified, :message
+  attributes :id, :username, :email, :date_modified
 end
