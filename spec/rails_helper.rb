@@ -7,6 +7,15 @@ require 'spec_helper'
 require 'rspec/rails'
 require "database_cleaner"
 require "factory_girl"
+require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+   add_filter 'app/mailers'
+   add_filter 'app/jobs'
+   add_filter 'app/channels'
+end
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
