@@ -5,7 +5,7 @@ class Api::V1::BucketlistsController < ApplicationController
   def create
     @bucketlist = @current_user.bucketlists.new(bucketlist_params)
     return create_error unless @bucketlist.save
-    render json: @bucketlist
+    render json: @bucketlist, status: :created
   end
 
   def index

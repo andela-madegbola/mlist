@@ -44,5 +44,8 @@ module Concerns
       render json: { error: create_error_message }, status: 400
     end
 
+    def no_route_message
+      "This endpoint does not exist"
+    end
   end
 end

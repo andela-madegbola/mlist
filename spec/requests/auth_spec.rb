@@ -9,7 +9,6 @@ RSpec.describe "Auth", type: :request do
 
       it "assigns a token to the user" do
         expect(response).to have_http_status(200)
-        print response.body
         expect(json_response[:auth_token]).to_not eq nil
         expect(json_response[:message]).to include "Your token expires in 3 hours time"
       end
@@ -36,14 +35,17 @@ RSpec.describe "Auth", type: :request do
     context "with valid jwt token" do
       it "returns logout success message" do
         get auth_logout_path, {}, authorization_header(1)
-        # expect(response).to have_http_status(200)
+
+        expect(response).to have_http_status(200)
         expect(json_response[:message]).
           to eq "You are now logged out!"
       end
 
       it "invalidates all active jwt tokens" do
         auth_header = authorization_header(1)
+
         get auth_logout_path, {}, auth_header
+
         invalid_token = JsonWebToken.decode(auth_header["Authorization"])
         expect(invalid_token[:user_id]).to eq User.first.id
         expect(invalid_token).to have_key :serial_no
@@ -54,6 +56,7 @@ RSpec.describe "Auth", type: :request do
     context "with invalid jwt token" do
       it "returns not authorized error" do
         get auth_logout_path, {}, tampered_token
+
         expect(response).to have_http_status(:unauthorized)
         expect(json_response[:error]).to eq "You are not authorized!"
       end
@@ -62,6 +65,7 @@ RSpec.describe "Auth", type: :request do
     context "with no jwt token" do
       it "returns not authorized error" do
         get auth_logout_path
+
         expect(response).to have_http_status(:unauthorized)
         expect(json_response[:error]).to eq "You are not authorized!"
       end
@@ -73,7 +77,9 @@ RSpec.describe "Auth", type: :request do
       it "disallows access to other user's information" do
         create_bucketlist
         FactoryGirl.create(:user, :user2)
+
         get bucketlist_path, {}, authorization_header(2)
+
         expect(response).to have_http_status(:forbidden)
         expect(json_response[:error]).to eq "This bucketlist cannot be found"
       end
