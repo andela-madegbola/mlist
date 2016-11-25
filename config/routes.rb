@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  match "*path", to: "application#no_route", via: :all
 end

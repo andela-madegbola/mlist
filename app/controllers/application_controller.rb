@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::API
   require 'json_web_token'
-
   include Concerns::Messages
-  before_action :authenticate_request
+
+  before_action :authenticate_request, except: [:no_route]
+
+  def no_route
+    render json: { error: no_route_message }, status: 404
+  end
 
   private
 
